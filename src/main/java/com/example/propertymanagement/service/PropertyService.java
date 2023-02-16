@@ -1,8 +1,6 @@
 package com.example.propertymanagement.service;
 
 import com.example.propertymanagement.dto.PropertyDTO;
-import org.springframework.http.ResponseEntity;
-
 import java.util.List;
 
 public interface PropertyService {
