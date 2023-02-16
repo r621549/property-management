@@ -5,11 +5,7 @@ import com.example.propertymanagement.dto.PropertyDTO;
 import com.example.propertymanagement.entity.PropertyEntity;
 import com.example.propertymanagement.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.Entity;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,15 +22,13 @@ public class PropertyServiceImpl implements PropertyService {
 
         PropertyEntity entity = propertyConverter.convertDtoToEntity(propertyDTO);
         entity = propertyRepository.save(entity);
-        propertyDTO = propertyConverter.convertEntityToDto(entity);
-        return propertyDTO;
+        return propertyConverter.convertEntityToDto(entity);
     }
 
     @Override
     public List<PropertyDTO> getAllProperties() {
         List<PropertyEntity> entities = (List<PropertyEntity>) propertyRepository.findAll();
-        List<PropertyDTO> dtos = propertyConverter.convertEntitiesToDtos(entities);
-        return dtos;
+        return propertyConverter.convertEntitiesToDtos(entities);
     }
 
     /**

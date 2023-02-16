@@ -23,39 +23,39 @@ public class PropertyController {
 
     @PostMapping("/properties")
     public ResponseEntity<PropertyDTO> saveProperty(@RequestBody PropertyDTO propertyDTO){
-        return new ResponseEntity<PropertyDTO>(propertyService.saveProperty(propertyDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(propertyService.saveProperty(propertyDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/properties")
     public ResponseEntity<List<PropertyDTO>> getProperties(){
-        return new ResponseEntity<List<PropertyDTO>>(propertyService.getAllProperties(), HttpStatus.OK);
+        return new ResponseEntity<>(propertyService.getAllProperties(), HttpStatus.OK);
     }
 
     @PutMapping("/properties/{propertyId}")
     public ResponseEntity<PropertyDTO> updateProperty(@RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId){
         PropertyDTO dto = propertyService.updateProperty(propertyDTO, propertyId);
         if(dto != null){
-            return new ResponseEntity<PropertyDTO>(dto, HttpStatus.OK);
+            return new ResponseEntity<>(dto, HttpStatus.OK);
         }
-        return new ResponseEntity<PropertyDTO>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PatchMapping("/properties/{propertyId}/description")
     public ResponseEntity<PropertyDTO> updateDescription(@RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId){
         PropertyDTO dto = propertyService.updateDescription(propertyDTO, propertyId);
         if(dto != null){
-            return new ResponseEntity<PropertyDTO>(dto, HttpStatus.OK);
+            return new ResponseEntity<>(dto, HttpStatus.OK);
         }
-        return new ResponseEntity<PropertyDTO>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PatchMapping("/properties/{propertyId}/price")
     public ResponseEntity<PropertyDTO> updatePrice(@RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId){
         PropertyDTO dto = propertyService.updatePrice(propertyDTO, propertyId);
         if(dto != null){
-            return new ResponseEntity<PropertyDTO>(dto, HttpStatus.OK);
+            return new ResponseEntity<>(dto, HttpStatus.OK);
         }
-        return new ResponseEntity<PropertyDTO>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/properties/{propertyId}")
